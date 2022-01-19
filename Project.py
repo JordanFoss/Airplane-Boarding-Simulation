@@ -1,8 +1,6 @@
 import random
 import statistics
 import math
-import matplotlib.pyplot as plt
-
 """
     Function used to test the speed of many simulations.
     Parameters:
@@ -165,8 +163,6 @@ def printPassengerSeats(Passengers):
 """
     Call this function to run the simulation.
     Parameters:
-        displayMode : Bool
-            If true a graph showing seated passengers vs timestep is shown
         Type : String
             Strategy type to use
         baggage : int
@@ -181,7 +177,7 @@ def printPassengerSeats(Passengers):
     Returns:
         Time steps taken for boaridng to complete
 """
-def simulation(displayMode, Type, baggage, percentFast, randomiseBaggage):
+def simulation(Type, baggage, percentFast, randomiseBaggage):
     #Matrix representing the plane
     #Middle column [3] is the aisle, while [0-2] and [4-6] are the seats
     #1 idencates that a person is there, 0 if not
@@ -236,14 +232,6 @@ def simulation(displayMode, Type, baggage, percentFast, randomiseBaggage):
         numSeated, numUnseated = numSeatedPassengers(OnBoardPassengers) 
         seatedPassengers.append(numSeated)
         unseatedPassengers.append(numUnseated)
-
-    if displayMode:
-        plt.plot(seatedPassengers, 'g',  unseatedPassengers, 'r')
-        plt.title("Passenger seating over time with " + Type)
-        plt.ylabel("On Board Passengers")
-        plt.xlabel("Time")
-        plt.legend(["Seated", "Unseated"])
-        plt.show()
     
     return timeSteps
 
